@@ -8,14 +8,21 @@ import {
   Sparkles, 
   MessageSquare,
   Clock,
-  CheckCircle2
+  CheckCircle2,
+  Server,
+  Loader2,
+  AlertCircle,
+  Phone
 } from 'lucide-react';
 import { Github, Linkedin } from './BrandIcons';
 import { personalInfo } from '../data/portfolioData';
+import { submitContactMessage } from '../services/contactService';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,21 +30,48 @@ export default function ContactSection() {
     message: ''
   });
 
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e) => {
+  const handleCopyPhone = () => {
+    if (personalInfo.phoneRaw || personalInfo.phone) {
+      navigator.clipboard.writeText(personalInfo.phoneRaw || personalInfo.phone);
+      setCopiedPhone(true);
+      setTimeout(() => setCopiedPhone(false), 2000);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a static GitHub Pages site, this provides instant interactive feedback
-    // and also prepares a pre-filled mailto fallback.
-    setFormSubmitted(true);
-    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`
-    )}`;
-    window.open(mailtoUrl, '_blank');
+    setIsSubmitting(true);
+    
+    try {
+      const result = await submitContactMessage(formData, personalInfo.email);
+      setSubmitResult(result);
+    } catch (err) {
+      setSubmitResult({
+        success: false,
+        mode: 'error',
+        message: err.message || 'An unexpected error occurred.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleResetForm = () => {
+    setSubmitResult(null);
+    setFormData({
+      name: '',
+      email: '',
+      subject: 'Full Stack & Enablement Inquiry',
+      message: ''
+    });
   };
 
   return (
@@ -60,7 +94,7 @@ export default function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto">
           
-          {/* Left Column: Direct Info & Advisory Services */}
+          {/* Left Column: Direct Info & Channels */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="glass-panel p-6 rounded-2xl border border-slate-800 space-y-6">
@@ -87,6 +121,29 @@ export default function ContactSection() {
                     {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                   </button>
                 </div>
+
+                {personalInfo.phone && (
+                  <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-teal-950 text-teal-400 flex items-center justify-center">
+                        <Phone className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-slate-400 uppercase font-mono">Mobile / WhatsApp</p>
+                        <a href={`tel:${personalInfo.phoneRaw || personalInfo.phone}`} className="text-xs font-mono text-slate-200 hover:text-teal-400 transition-colors">
+                          {personalInfo.phone}
+                        </a>
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleCopyPhone}
+                      className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
+                      title="Copy Mobile Number"
+                    >
+                      {copiedPhone ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  </div>
+                )}
 
                 <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
                   <div className="w-9 h-9 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center">
@@ -146,7 +203,7 @@ export default function ContactSection() {
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                  <span>Java 21 Virtual Threads & modern reactive architectural reviews</span>
+                  <span>Java 21, Spring Boot 3, and React system architectures</span>
                 </div>
               </div>
             </div>
@@ -156,23 +213,51 @@ export default function ContactSection() {
           {/* Right Column: Interactive Contact Form */}
           <div className="lg:col-span-7">
             <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800">
-              <h3 className="text-xl font-bold text-white mb-2">Send a Message</h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xl font-bold text-white">Send a Message</h3>
+                {backendUrl ? (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/60 text-[10px] font-mono text-emerald-400" title={`Connected to: ${backendUrl}`}>
+                    <Server className="w-3 h-3" />
+                    Backend Connected
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-[10px] font-mono text-slate-400" title="Set VITE_API_URL in .env to connect custom backend API">
+                    <Server className="w-3 h-3" />
+                    Backend-Ready
+                  </span>
+                )}
+              </div>
               <p className="text-xs text-slate-400 mb-6">
                 Fill out the form below to reach out directly or schedule a technical discussion.
               </p>
 
-              {formSubmitted ? (
-                <div className="p-6 rounded-xl bg-emerald-950/50 border border-emerald-800/60 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-600/30 text-emerald-400 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+              {submitResult ? (
+                <div className={`p-6 rounded-xl border text-center space-y-3 ${
+                  submitResult.success
+                    ? 'bg-emerald-950/50 border-emerald-800/60'
+                    : 'bg-rose-950/50 border-rose-800/60'
+                }`}>
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto ${
+                    submitResult.success
+                      ? 'bg-emerald-600/30 text-emerald-400'
+                      : 'bg-rose-600/30 text-rose-400'
+                  }`}>
+                    {submitResult.success ? <CheckCircle2 className="w-6 h-6" /> : <AlertCircle className="w-6 h-6" />}
                   </div>
-                  <h4 className="text-lg font-bold text-white">Message Prepared!</h4>
+                  <h4 className="text-lg font-bold text-white">
+                    {submitResult.mode === 'backend' ? 'Delivered via Backend API!' : 'Message Prepared!'}
+                  </h4>
                   <p className="text-xs text-slate-300 max-w-md mx-auto">
-                    Your email client has been opened with your inquiry. You can also reach me directly at <strong className="text-emerald-400 font-mono">{personalInfo.email}</strong>.
+                    {submitResult.message}
                   </p>
+                  {submitResult.mode === 'backend' && (
+                    <p className="text-[11px] font-mono text-emerald-400">
+                      Response recorded via POST {backendUrl}/api/contact
+                    </p>
+                  )}
                   <button
-                    onClick={() => setFormSubmitted(false)}
-                    className="text-xs text-indigo-400 underline hover:text-indigo-300"
+                    onClick={handleResetForm}
+                    className="text-xs text-indigo-400 underline hover:text-indigo-300 mt-2 block mx-auto"
                   >
                     Send another message
                   </button>
@@ -233,17 +318,27 @@ export default function ContactSection() {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Hi Alex, I'd like to discuss our upcoming microservices migration and developer enablement roadmap..."
+                      placeholder="Hi Mahesh, I'd like to discuss our upcoming microservices architecture and developer enablement roadmap..."
                       className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-[1.01] transition-all"
+                    disabled={isSubmitting}
+                    className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-[1.01] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4" />
-                    Dispatch Message
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Dispatching...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>{backendUrl ? 'Send via Backend API' : 'Dispatch Message'}</span>
+                      </>
+                    )}
                   </button>
                 </form>
               )}

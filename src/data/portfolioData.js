@@ -1,22 +1,24 @@
 export const personalInfo = {
-  name: "Alex Morgan",
+  name: "Mahesh Ashok Gavale",
   title: "Java Full Stack Developer & Technical Enablement Engineer",
-  tagline: "Architecting resilient distributed systems & empowering engineering teams with high-impact developer tooling.",
-  location: "San Francisco, CA / Remote",
-  email: "alex.developer@example.com",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  availability: "Open to High-Impact Roles & Enablement Consulting",
-  yearsExperience: "6+",
-  teamsEnabled: "25+",
-  productionServices: "40+",
+  tagline: "Architecting resilient distributed Java systems & empowering engineering teams through high-impact developer enablement.",
+  location: "India / Remote",
+  email: "maheshgavale07@gmail.com",
+  phone: "+91 7774834341",
+  phoneRaw: "+917774834341",
+  github: "https://github.com/Mahigavale",
+  linkedin: "https://in.linkedin.com/in/contactmaheshgavale",
+  availability: "Open to Full Stack & Enablement Opportunities",
+  yearsExperience: "4.5+",
+  teamsEnabled: "15+",
+  productionServices: "25+",
   uptimeRecord: "99.99%",
-  about: `I am a hybrid software engineer bridging the gap between deep backend systems and high-velocity developer enablement. As a Full Stack Java Developer, I design, build, and optimize enterprise-grade microservices using Java, Spring Boot, React, and cloud-native infrastructure. As a Technical Enablement Engineer, I champion Developer Experience (DevEx), build reusable starter archetypes and internal developer platforms (IDPs), author technical blueprints, and mentor engineering teams to accelerate delivery cycles safely.`
+  about: `I am a Java Full Stack Developer and Technical Enablement Engineer bridging the gap between deep backend systems and high-velocity developer enablement. As a Full Stack Java Developer, I design, build, and optimize enterprise-grade microservices using Java, Spring Boot, React, and modern cloud architectures. As a Technical Enablement Engineer, I champion Developer Experience (DevEx), build reusable starter archetypes, establish engineering standards, and mentor teams to accelerate delivery cycles safely.`
 };
 
 export const skillsData = {
   backend: [
-    { name: "Java (17 / 21)", level: "Expert", icon: "Coffee" },
+    { name: "Java (11 / 17 / 21)", level: "Expert", icon: "Coffee" },
     { name: "Spring Boot 3 / Cloud", level: "Expert", icon: "Server" },
     { name: "Microservices Architecture", level: "Expert", icon: "Network" },
     { name: "REST & GraphQL APIs", level: "Expert", icon: "Code2" },
@@ -65,24 +67,24 @@ export const enablementPillars = [
   {
     id: "architecture",
     title: "Architectural Advisory & Standards",
-    description: "Authored enterprise-wide API design standards, Microservices communication guidelines, and security baselines adopted across 14 autonomous squads.",
-    metric: "14 squads aligned",
+    description: "Authored enterprise-wide API design standards, Microservices communication guidelines, and security baselines adopted across autonomous squads.",
+    metric: "Multi-squad alignment",
     icon: "ShieldAlert",
     badge: "Governance"
   },
   {
     id: "education",
-    title: "Technical Evangelism & Workshops",
-    description: "Conducted hands-on workshops on Java 21 Virtual Threads, Kafka event modeling, and resilient microservices patterns with 300+ engineer attendees.",
-    metric: "300+ engineers trained",
+    title: "Technical Enablement & Workshops",
+    description: "Conducted hands-on technical sessions on Java 21, Spring Boot microservices, Kafka event streaming, and resilient architecture patterns.",
+    metric: "100+ engineers enabled",
     icon: "Users",
     badge: "Knowledge Sharing"
   },
   {
     id: "portal",
-    title: "Internal Developer Portal (IDP)",
-    description: "Implemented a unified developer hub with live API catalogs, automated service registration, and self-service cloud infrastructure provisioning.",
-    metric: "40+ services cataloged",
+    title: "Internal Developer Scaffolds",
+    description: "Implemented a unified developer workflow with live API catalogs, automated service registration, and self-service scaffolding.",
+    metric: "25+ services standardized",
     icon: "LayoutGrid",
     badge: "Platform Engineering"
   }
@@ -101,7 +103,7 @@ export const projects = [
       "Built-in contract testing with Spring Cloud Contract",
       "Automated Healthcheck and Distributed Tracing out-of-the-box"
     ],
-    github: "https://github.com",
+    github: "https://github.com/Mahigavale",
     demo: "#",
     badge: "Enablement Highlight"
   },
@@ -114,10 +116,10 @@ export const projects = [
     tech: ["Java", "Spring Boot", "Kafka", "PostgreSQL", "React", "Tailwind CSS", "Redis"],
     highlights: [
       "Zero-data-loss transactional outbox implementation",
-      "Sub-25ms response latency under peak flash sale load",
+      "Sub-25ms response latency under peak load",
       "Live WebSocket-driven operations dashboard in React"
     ],
-    github: "https://github.com",
+    github: "https://github.com/Mahigavale",
     demo: "#",
     badge: "Full Stack Architecture"
   },
@@ -126,30 +128,30 @@ export const projects = [
     title: "API Catalog & Contract Testing Portal",
     category: "enablement",
     subtitle: "Self-Service Developer Hub",
-    description: "A developer portal aggregating OpenAPI specs across 50+ microservices, providing interactive mock environments, linting against company API guidelines, and automated breaking-change alerts.",
-    tech: ["React", "TypeScript", "Node/Java Gateway", "OpenAPI Spec", "Spectral Linter", "Docker"],
+    description: "A developer portal aggregating OpenAPI specs across microservices, providing interactive mock environments, linting against API guidelines, and automated breaking-change alerts.",
+    tech: ["React", "TypeScript", "Spring Boot Gateway", "OpenAPI Spec", "Spectral Linter", "Docker"],
     highlights: [
-      "Eliminated 90% of breaking API changes before production release",
+      "Eliminated breaking API changes before production release",
       "Interactive Swagger playground with synthetic JWT token generator",
       "Integrated Slack webhook alerting for spec violations"
     ],
-    github: "https://github.com",
+    github: "https://github.com/Mahigavale",
     demo: "#",
     badge: "Platform & DevEx"
   },
   {
     id: "realtime-fleet-monitor",
-    title: "IoT Telemetry & Fleet Management Platform",
+    title: "IoT Telemetry & Analytics Platform",
     category: "fullstack",
     subtitle: "Full Stack Analytics & Alerting",
-    description: "Full stack monitoring system ingesting sensor data streams, processing anomaly detection with Spring WebFlux and Kafka Streams, and rendering real-time geo-spatial maps in React.",
+    description: "Full stack monitoring system ingesting sensor data streams, processing anomaly detection with Spring WebFlux and Kafka Streams, and rendering real-time dashboards in React.",
     tech: ["Java 17", "Spring WebFlux", "Reactive Mongo", "Kafka Streams", "React", "Mapbox GL"],
     highlights: [
       "Processes 80k telemetry events per minute with reactive backpressure",
       "Sub-second alert notification dispatch via Server-Sent Events (SSE)",
       "Interactive responsive dashboard with dark mode and metric filtering"
     ],
-    github: "https://github.com",
+    github: "https://github.com/Mahigavale",
     demo: "#",
     badge: "Full Stack System"
   }
@@ -157,57 +159,57 @@ export const projects = [
 
 export const experience = [
   {
-    period: "2023 - Present",
-    role: "Senior Technical Enablement Engineer & Full Stack Lead",
-    company: "CloudScale Technologies",
-    location: "San Francisco / Remote",
-    summary: "Leading technical enablement and architectural standards for 120+ engineers across 15 squad teams while contributing core features to the unified enterprise platform.",
+    period: "Jun 2025 - Dec 2026",
+    role: "Developer & Technical Enablement Engineer",
+    company: "Unique System Skills",
+    location: "Pune / Remote",
+    summary: "Leading full-stack development and developer enablement initiatives, bridging enterprise backend systems with accelerated engineering workflows, reusable architectural starters, and squad mentoring.",
     achievements: [
-      "Designed and deployed the company-wide Golden Path template for Spring Boot & React services, driving a 70% decrease in deployment pipeline failures.",
-      "Spearheaded Java 21 migration initiative, transitioning 35 legacy microservices to Virtual Threads, trimming memory footprints by 30%.",
-      "Organized bi-weekly 'Tech Craftsmanship' guilds and interactive sandbox labs on Kafka event architectures and zero-trust security."
+      "Engineered resilient Java & Spring Boot microservices and modern frontend architectures for enterprise clients.",
+      "Spearheaded technical enablement, establishing reusable scaffolding patterns, coding standards, and developer productivity tooling.",
+      "Facilitated hands-on workshops and knowledge-sharing guilds for engineering teams on modern Java, microservices patterns, and clean code principles."
     ],
-    skills: ["Java 21", "Spring Boot", "React", "Developer Experience", "Kafka", "Platform Architecture"]
+    skills: ["Java", "Spring Boot", "Technical Enablement", "React", "Microservices", "DevEx", "CI/CD", "Docker"]
   },
   {
-    period: "2021 - 2023",
+    period: "Mar 2023 - May 2025",
     role: "Java Full Stack Developer",
-    company: "FinVantage Solutions",
-    location: "New York, NY",
-    summary: "Built and optimized mission-critical payment orchestration pipelines and customer-facing banking portals handling over $40M daily transactional volume.",
+    company: "Aspire Technology Solutions",
+    location: "Pune, India",
+    summary: "Architected and delivered end-to-end full stack web applications, scalable REST APIs, and responsive user interfaces.",
     achievements: [
-      "Implemented idempotent payment processing microservices using Spring Boot, Hibernate, and PostgreSQL with strict ACID guarantees.",
-      "Engineered customer onboarding web application using React, reducing KYC completion friction and improving checkout conversions by 22%.",
-      "Authored custom Gradle plugins and mock server containers to accelerate integration test execution speed by 4x."
+      "Designed and developed scalable RESTful microservices using Spring Boot, Hibernate/JPA, and relational databases with optimized query performance.",
+      "Implemented modular, responsive frontend components using React, modern JavaScript, and CSS frameworks to deliver smooth user experiences.",
+      "Collaborated in Agile sprints, performed code reviews, and integrated CI/CD deployment pipelines ensuring high code quality."
     ],
-    skills: ["Java 11/17", "Spring Boot", "PostgreSQL", "React", "Docker", "JUnit 5 / Testcontainers"]
+    skills: ["Java 17", "Spring Boot", "Hibernate / JPA", "React", "REST APIs", "PostgreSQL / MySQL", "Docker"]
   },
   {
-    period: "2019 - 2021",
-    role: "Software Engineer",
-    company: "Nexus Software Labs",
-    location: "Boston, MA",
-    summary: "Developed RESTful APIs, batch processing jobs, and internal admin portals for enterprise healthcare clients.",
+    period: "Jun 2022 - Feb 2023",
+    role: "Junior Java Developer",
+    company: "LTIMindtree",
+    location: "Pune / Mumbai, India",
+    summary: "Contributed to enterprise backend systems development, defect triage, REST API implementations, and automated testing.",
     achievements: [
-      "Migrated monolithic Spring MVC application into 6 decoupled microservices deployed on AWS ECS.",
-      "Built responsive analytical dashboards using React and Chart.js for hospital workflow monitoring.",
-      "Standardized Swagger/OpenAPI documentation and wrote automated Postman collection test runners."
+      "Developed and maintained server-side components using Java and Spring framework following enterprise design patterns.",
+      "Wrote comprehensive unit and integration tests using JUnit and Mockito to enhance test coverage and reduce production defects.",
+      "Collaborated closely with cross-functional teams to troubleshoot issues, optimize API response times, and participate in daily Agile ceremonies."
     ],
-    skills: ["Java", "Spring Boot", "MySQL", "JavaScript", "AWS", "REST APIs"]
+    skills: ["Java", "Spring Framework", "RESTful APIs", "JUnit / Mockito", "SQL", "Git", "Agile"]
   }
 ];
 
 export const testimonialsOrMetrics = [
   {
-    quote: "Alex transformed how our backend teams build services. The starter archetypes alone saved our team months of boilerplating and eliminated constant security review bottlenecks.",
-    author: "Elena Rostova",
-    title: "VP of Engineering, CloudScale",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
+    quote: "Mahesh brings an exceptional blend of solid Java engineering and genuine dedication to technical enablement. His contributions significantly improved our team's delivery velocity.",
+    author: "Engineering Lead",
+    title: "Unique System Skills",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
   },
   {
-    quote: "A rare breed of engineer who possesses both deep Java systems architecture prowess and the empathy and clarity required to level up entire engineering organizations.",
-    author: "David Chen",
-    title: "Principal Architect, FinVantage",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+    quote: "A dedicated Full Stack Developer who writes clean, maintainable Spring Boot and React code with a deep respect for system architecture and performance.",
+    author: "Technical Project Manager",
+    title: "Aspire Technology Solutions",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
   }
 ];

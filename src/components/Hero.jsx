@@ -226,7 +226,7 @@ Internal Developer Platform (IDP): Ready for squads`);
                   <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-                  <span className="text-xs text-slate-400 font-mono ml-2">enablement-devkit@cloudscale:~</span>
+                  <span className="text-xs text-slate-400 font-mono ml-2">mahesh@enablement-dev:~</span>
                 </div>
                 <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-950/80 text-indigo-400 border border-indigo-800/40">
                   Interactive CLI
@@ -265,7 +265,7 @@ Internal Developer Platform (IDP): Ready for squads`);
                   {terminalOutput}
                 </div>
                 <div className="flex items-center gap-1.5 text-indigo-400 pt-2 border-t border-slate-800/40">
-                  <span className="text-slate-500">amorgan@developer:~$</span>
+                  <span className="text-slate-500">mgavale@developer:~$</span>
                   <span className="w-2 h-4 bg-indigo-400 animate-pulse"></span>
                 </div>
               </div>
